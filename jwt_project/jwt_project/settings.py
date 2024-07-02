@@ -46,6 +46,11 @@ INSTALLED_APPS = [
     'api'
 ]
 
+# FOR CUSTOM AUTHENTICATION
+AUTH_USER_MODEL = 'api.CustomUserAuthentication'
+
+AUTHENTICATION_BACKENDS = ['api.authentication.EmailBackend']
+
 # TOKEN AUTHENTICATION
 
 SIMLE_JWT = {
@@ -56,6 +61,11 @@ SIMLE_JWT = {
     "AUTH_HEADER_NAME": "HTTP_AUTHENTICATION",
 
     "SIGNING_KEY": JWT_SECRET_KEY,
+
+    # for cookie
+    'AUTH_COOKIE': 'access_token',
+    'AUTH_COOKIE_SECURE': True,
+    'AUTH_COOKIE_HTTP_ONLY': False
 }
 
 # for the authentication of the token the header will be looking for Authentication Header and the value for this.
